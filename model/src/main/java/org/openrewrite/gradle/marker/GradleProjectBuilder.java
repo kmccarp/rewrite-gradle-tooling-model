@@ -88,8 +88,8 @@ public final class GradleProjectBuilder {
     }
 
     public static List<GradlePluginDescriptor> pluginDescriptors(@Nullable PluginManager pluginManager) {
-        if (pluginManager instanceof PluginManagerInternal) {
-            return pluginDescriptors((PluginManagerInternal) pluginManager);
+        if (pluginManager instanceof PluginManagerInternal internal) {
+            return pluginDescriptors(internal);
         }
         return emptyList();
     }

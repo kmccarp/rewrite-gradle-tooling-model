@@ -64,8 +64,7 @@ public class Assertions {
                 Path projectDir = tempDirectory;
                 try {
                     for (SourceFile sourceFile : sourceFiles) {
-                        if (sourceFile instanceof G.CompilationUnit) {
-                            G.CompilationUnit g = (G.CompilationUnit) sourceFile;
+                        if (sourceFile instanceof G.CompilationUnit g) {
                             if (g.getSourcePath().toString().endsWith(".gradle")) {
                                 Path groovyGradle = tempDirectory.resolve(g.getSourcePath());
                                 if (!tempDirectory.equals(groovyGradle.getParent()) && tempDirectory.equals(groovyGradle.getParent().getParent())) {
@@ -74,8 +73,7 @@ public class Assertions {
                                 Files.createDirectories(groovyGradle.getParent());
                                 Files.write(groovyGradle, g.printAllAsBytes());
                             }
-                        } else if (sourceFile instanceof Properties.File) {
-                            Properties.File f = (Properties.File) sourceFile;
+                        } else if (sourceFile instanceof Properties.File f) {
                             if (f.getSourcePath().endsWith("gradle.properties")) {
                                 Path gradleProperties = tempDirectory.resolve(f.getSourcePath());
                                 if (!tempDirectory.equals(gradleProperties.getParent()) && tempDirectory.equals(gradleProperties.getParent().getParent())) {
